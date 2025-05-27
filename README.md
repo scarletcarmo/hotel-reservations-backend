@@ -1,4 +1,4 @@
-echo "#  Reservations Backend
+echo "# git  Reservations Backend
 Proyecto backend para sistema de reservas de hotel, construido con **Express.js**, **TypeScript** y **PostgreSQL**.
 
 ---
@@ -82,6 +82,9 @@ src/
 - Ver tablas: \`\\dt\`
 - Ver columnas: \`\\d users\`
 - Reinstalar: \`npm install\`
+
+- Probar pool \`npx ts-node src/testConnection.ts\`
+
 
 " > README.md
 
