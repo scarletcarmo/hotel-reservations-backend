@@ -1,0 +1,18 @@
+{
+  "user": {
+    "fetchSuccess": "Usuarios cargados correctamente",
+    "fetchByOneSuccess": "Usuario cargado correctamente",
+    "notFound": "Usuario no existe",
+    "create": "creado correctamente",
+    "update": "actualizado correctamente",
+    "delete": "eliminado correctamente",
+    "createError": "Error al crear usuario",
+    "getError": "Error al obtener usuario",
+    "updateError": "Error al actualizar usuario",
+    "deleteError": "Error al eliminar usuario"
+  },
+  "common": {
+    "notFound": "Recurso no encontrado",
+    "serverError": "Error interno del servidor"
+  }
+}
