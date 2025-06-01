@@ -7,9 +7,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use('/api', router);  // Se usa "/api" como prefijo común para todas las rutas
+app.use('/api/v1', router);
+  // Se usa "/api/v1/" como prefijo común para todas las rutas
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
-  printRoutes(app);
+  //printRoutes(app);
 });
