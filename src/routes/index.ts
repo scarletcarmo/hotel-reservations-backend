@@ -1,12 +1,14 @@
 import { Router } from 'express';
 import userRouter from './user.routes';
 import authRouter from './auth.routes';
+import userGuestRouter from './user_guest.routes';
 
 const router = Router();
-// Prefijo para las rutas de user
-router.use('/users', userRouter);  
+//user
+router.use('/users', userRouter); 
+//auth 
 router.use('/auth', authRouter);  
-// Prefijo para las rutas de reservations
-// Prefijo para las rutas de guest
+//guest
+router.use('/guests', userGuestRouter);  
 
 export default router;
