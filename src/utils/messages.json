@@ -11,6 +11,14 @@
     "updateError": "Error al actualizar usuario",
     "deleteError": "Error al eliminar usuario"
   },
+  "reservation": {
+    "fetchSuccess": "Reservaciones cargadas correctamente",
+    "fetchByOneSuccess": "Reservacion cargada correctamente",
+    "notFound": "Reservacion no existe",
+    "create": "creado correctamente",
+    "update": "actualizado correctamente",
+    "delete": "eliminado correctamente"
+  },
   "common": {
     "notFound": "Recurso no encontrado",
     "serverError": "Error interno del servidor"
