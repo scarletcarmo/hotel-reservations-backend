@@ -1,5 +1,4 @@
-import express, { Request, Response } from 'express';
-import { printRoutes } from './utils/printRoutes';
+import express from 'express';
 import router from './routes';
 const app = express();
 
