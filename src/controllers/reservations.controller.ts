@@ -23,6 +23,40 @@ export const getById = async (req: Request, res: Response) => {
     }
 };
 
+export const getByUser = async (req: Request, res: Response) => {
+    try {
+        const { user_id } = req.params;
+        const result = await pool.query(`
+            SELECT r.check_in, r.check_out, u.name, u.last_name, u.identification
+            FROM reservation AS r
+            JOIN users AS u ON r.guest_id = u.id
+            WHERE u.id = $1
+            `, [user_id]);
+        response.ok(res, { message: getMessage('reservation.fetchByOneSuccess'), data: result.rows[0] });
+    } catch (error) {
+        response.serverError(res, error, 'Error al obtener usuario');
+    }
+}
+//GET /reservations/room/:roomId
+export const getByRooms = async (req: Request, res: Response) => {
+    try {
+        const { rooms_id } = req.params;
+        const result = await pool.query(`
+            SELECT r.check_in, r.check_out, u.name, u.last_name, u.identification
+            FROM reservation AS r
+            JOIN rooms rm u ON r.rooms_id = rm.id
+            WHERE rm.id = $1
+            `, [rooms_id]);
+        response.ok(res, { message: getMessage('reservation.fetchByOneSuccess'), data: result.rows[0] });
+    } catch (error) {
+        response.serverError(res, error, 'Error al obtener usuario');
+    }
+}
+
+export const getByAvailability = async (req: Request, res: Response) => {
+    //GET /reservations/availability?roomId=1&check_in=2025-06-15&check_out=2025-06-20
+}
+
 export const create = async (req: Request, res: Response) => {
     try {
         console.log("Body recibido:", req.body);
@@ -69,6 +103,18 @@ export const deleteReservation = async (req: Request, res: Response) => {
         const { id } = req.params;
         await pool.query('DELETE FROM reservation WHERE id=$1', [id]);
         //response.noContent(res);
+        response.ok(res, { message: getMessage('reservation.delete') });
+    } catch (error) {
+        response.serverError(res, { message: getMessage('reservation.deleteError') });
+    }
+};
+
+export const cancelReservation = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+        const query = `UPDATE reservation SET status = 'cancelled' WHERE id=$1 RETURNING *`;
+        const result = await pool.query(query, [id]);
+                //response.noContent(res);
         response.ok(res, { message: getMessage('reservation.delete') });
     } catch (error) {
         response.serverError(res, { message: getMessage('reservation.deleteError') });
